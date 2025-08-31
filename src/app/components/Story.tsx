@@ -6,8 +6,8 @@ import { CheckCircle } from "lucide-react";
 
 export default function Story() {
   return (
-    <section className="w-full bg-[#fdfcf9] text-[#1a1a1a] py-24 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section className="w-full bg-[#fdfcf9] text-[#1a1a1a] py-10 md:py-18  px-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-12 gap-6 items-center">
         
         {/* Left: Lifestyle Image */}
         <motion.div

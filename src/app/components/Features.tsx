@@ -28,7 +28,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="w-full bg-[#481E01] text-[#FFE1B5] py-16 md:py-24 px-4 md:px-6">
+    <section className="w-full bg-[#481E01] text-[#FFE1B5] py-10 sm:py-14 md:py-18 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
@@ -36,13 +36,13 @@ export default function Features() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-12 md:mb-16 leading-snug"
+          className="text-xl sm:text-3xl md:text-5xl font-serif font-bold mb-8 sm:mb-12 md:mb-16 leading-snug"
         >
           Why Choose Our Posters?
         </motion.h2>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {features.map((f, i) => (
             <motion.div
               key={i}
@@ -50,18 +50,18 @@ export default function Features() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-[#FFE1B5]/5 border border-[#FFE1B5]/20 shadow-md hover:shadow-xl transition-all"
+              className="flex flex-col items-center text-center p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-[#FFE1B5]/5 border border-[#FFE1B5]/20 shadow-md hover:shadow-xl transition-all"
             >
               {/* Icon */}
-              <f.icon className="w-10 h-10 md:w-12 md:h-12 text-[#D4AF37] mb-4" />
+              <f.icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#D4AF37] mb-3 sm:mb-4" />
 
               {/* Title */}
-              <h3 className="text-lg md:text-xl font-semibold font-serif mb-2">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold font-serif mb-1 sm:mb-2">
                 {f.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base text-[#FFE1B5]/80">
+              <p className="text-sm sm:text-base text-[#FFE1B5]/80">
                 {f.desc}
               </p>
             </motion.div>
