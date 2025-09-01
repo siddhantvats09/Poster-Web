@@ -1,69 +1,70 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Truck, Gem, Star } from "lucide-react";
+import { FaLeaf, FaPaintBrush, FaShippingFast, FaSmile } from "react-icons/fa";
 
 const features = [
   {
-    icon: ShieldCheck,
-    title: "Museum-Grade Quality",
-    desc: "Printed on archival paper with fade-resistant inks to preserve brilliance for decades.",
+    id: 1,
+    title: "Eco-Friendly Prints",
+    desc: "We use sustainable paper and inks that are safe for your home and the planet.",
+    icon: <FaLeaf size={28} />,
   },
   {
-    icon: Gem,
-    title: "Limited Edition",
-    desc: "Only 50 prints available worldwide — every piece comes with a certificate of authenticity.",
+    id: 2,
+    title: "Premium Quality",
+    desc: "Every poster is printed with high-resolution detail and vibrant colors.",
+    icon: <FaPaintBrush size={28} />,
   },
   {
-    icon: Truck,
-    title: "Secure, Fast Shipping",
-    desc: "Safely packaged and delivered to your doorstep with tracking and insurance.",
+    id: 3,
+    title: "Fast Delivery",
+    desc: "Get your posters delivered quickly with our reliable shipping service.",
+    icon: <FaShippingFast size={28} />,
   },
   {
-    icon: Star,
-    title: "Premium Experience",
-    desc: "From ordering to unboxing, every detail is designed to feel exclusive and personal.",
+    id: 4,
+    title: "Customer Happiness",
+    desc: "Our mission is to bring joy to your walls and smiles to our customers.",
+    icon: <FaSmile size={28} />,
   },
 ];
 
 export default function Features() {
   return (
-    <section className="w-full bg-[#481E01] text-[#FFE1B5] py-10 sm:py-14 md:py-18 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="w-full bg-[#F5E1C8] py-16 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-xl sm:text-3xl md:text-5xl font-serif font-bold mb-8 sm:mb-12 md:mb-16 leading-snug"
+          className="text-3xl md:text-4xl font-bold text-[#3B2B1A]"
         >
-          Why Choose Our Posters?
+          Why Choose Us
         </motion.h2>
+        <p className="mt-2 text-[#6A4E33] max-w-xl mx-auto">
+          We make posters that are not just art, but an experience you’ll love to hang on your walls.
+        </p>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
-          {features.map((f, i) => (
+        {/* Features Grid */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, i) => (
             <motion.div
-              key={i}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              key={feature.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-[#FFE1B5]/5 border border-[#FFE1B5]/20 shadow-md hover:shadow-xl transition-all"
+              whileHover={{ scale: 1.05 }}
+              className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center"
             >
-              {/* Icon */}
-              <f.icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#D4AF37] mb-3 sm:mb-4" />
-
-              {/* Title */}
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold font-serif mb-1 sm:mb-2">
-                {f.title}
+              <div className="text-[#C89F6B] mb-4">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-[#3B2B1A]">
+                {feature.title}
               </h3>
-
-              {/* Description */}
-              <p className="text-sm sm:text-base text-[#FFE1B5]/80">
-                {f.desc}
-              </p>
+              <p className="mt-2 text-sm text-[#6A4E33]">{feature.desc}</p>
             </motion.div>
           ))}
         </div>

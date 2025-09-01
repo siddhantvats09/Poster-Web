@@ -1,122 +1,96 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ShoppingBag } from "lucide-react";
+import Link from "next/link";
 
-const posterImages = [
-  "/images/poster1.jpg",
-  "/images/poster1.jpg",
-  "/images/poster1.jpg",
-  "/images/poster1.jpg",
+const products = [
+  {
+    id: 1,
+    name: "Abstract Art Poster",
+    price: "$25",
+    image: "/images/poster1.jpg",
+  },
+  {
+    id: 2,
+    name: "Minimalist Line Art",
+    price: "$20",
+    image: "/images/poster1.jpg",
+  },
+  {
+    id: 3,
+    name: "Vintage Travel Poster",
+    price: "$30",
+    image: "/images/poster1.jpg",
+  },
+  {
+    id: 4,
+    name: "Modern Typography",
+    price: "$22",
+    image: "/images/poster1.jpg",
+  },
 ];
 
 export default function ProductGallery() {
-  const [selected, setSelected] = useState(0);
-  const [size, setSize] = useState("Medium");
-
   return (
-    <section className="relative w-full bg-[#f9f9f7] text-[#1a1a1a] py-16 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-        
-        {/* Left: Image Gallery */}
-        <motion.div
-          initial={{ x: -60, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+    <section className="w-full bg-[#E9D3B8] py-16 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto text-center">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center"
+          className="text-3xl md:text-4xl font-bold text-[#3B2B1A]"
         >
-          {/* Main Image */}
-          <div className="relative w-[280px] h-[380px] sm:w-[320px] sm:h-[420px] md:w-[480px] md:h-[640px] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#1a1a1a]/20">
-            <Image
-              src={posterImages[selected]}
-              alt="Premium Poster"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          Shop Our Posters
+        </motion.h2>
 
-          {/* Thumbnails */}
-          <div className="flex gap-3 sm:gap-4 mt-6 flex-wrap justify-center">
-            {posterImages.map((img, i) => (
-              <motion.button
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => setSelected(i)}
-                className={`relative w-16 h-24 sm:w-20 sm:h-28 rounded-md overflow-hidden border-2 transition ${
-                  selected === i
-                    ? "border-[#d4af37]"
-                    : "border-transparent hover:border-[#1a1a1a]"
-                }`}
-              >
+        <p className="mt-2 text-[#6A4E33] max-w-xl mx-auto">
+          Explore our curated collection of posters to bring creativity and
+          character to your walls.
+        </p>
+
+        {/* Grid */}
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
+            >
+              <div className="relative w-full h-56">
                 <Image
-                  src={img}
-                  alt={`Poster ${i + 1}`}
+                  src={product.image}
+                  alt={product.name}
                   fill
                   className="object-cover"
                 />
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+              </div>
+              <div className="p-4 flex flex-col flex-grow justify-between">
+                <h3 className="text-lg font-medium text-[#3B2B1A]">
+                  {product.name}
+                </h3>
+                <p className="mt-1 text-[#6A4E33]">{product.price}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-        {/* Right: Product Details */}
-        <motion.div
-          initial={{ x: 60, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          {/* Title */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-tight">
-            “Golden Horizon” Premium Poster
-          </h2>
-
-          {/* Price */}
-          <p className="text-2xl font-semibold text-[#d4af37]">₹2,999</p>
-
-          {/* Size Options */}
-          <div>
-            <p className="font-medium mb-2">Select Size</p>
-            <div className="flex gap-3 sm:gap-4 flex-wrap">
-              {["Small", "Medium", "Large"].map((option) => (
-                <button
-                  key={option}
-                  onClick={() => setSize(option)}
-                  className={`px-4 py-2 rounded-xl border transition font-medium ${
-                    size === option
-                      ? "bg-[#1a1a1a] text-[#f9f9f7] border-[#1a1a1a]"
-                      : "border-[#1a1a1a]/40 hover:bg-[#f0f0f0]"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Short Description */}
-          <p className="text-base sm:text-lg text-[#1a1a1a]/80 leading-relaxed">
-            Crafted with <span className="font-semibold">archival inks</span> on
-            museum-grade paper, this limited edition print elevates any space
-            with timeless elegance. Only{" "}
-            <span className="font-semibold">50 pieces</span> available.
-          </p>
-
-          {/* Add to Cart */}
+        {/* CTA Button */}
+        <Link href="/shop">
           <motion.button
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="mt-6 inline-flex items-center gap-3 bg-[#1a1a1a] text-[#f9f9f7] px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
+            whileTap={{ scale: 0.95 }}
+            className="mt-10 px-8 py-3 rounded-2xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
           >
-            <ShoppingBag size={22} />
-            Add to Cart
+            View All
           </motion.button>
-        </motion.div>
+        </Link>
       </div>
     </section>
   );

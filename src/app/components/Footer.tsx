@@ -1,95 +1,128 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FaInstagram,
-  FaFacebookF,
-  FaTwitter,
-  FaCcVisa,
-  FaCcMastercard,
-} from "react-icons/fa";
+import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#481E01] text-[#FFE1B5] py-8 sm:py-12 md:py-16 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
+    <footer className="w-full bg-[#3B2B1A] text-white pt-16 pb-8 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-[#D4AF37] mb-3 sm:mb-4">
-            PosterAura
-          </h2>
-          <p className="text-[#FFE1B5]/80 text-sm leading-relaxed">
-            Crafting timeless posters that bring art, culture, and stories into
-            your home.
+          <h2 className="text-2xl font-bold">Posterly</h2>
+          <p className="mt-3 text-sm text-[#E9D3B8]">
+            Bringing walls to life with art that inspires and transforms your
+            space.
           </p>
         </motion.div>
 
         {/* Quick Links */}
         <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">
-            Quick Links
-          </h3>
-          <ul className="space-y-2 sm:space-y-3 text-sm">
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Shop All</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">About Us</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Contact</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">FAQ</li>
+          <h3 className="text-lg font-semibold">Quick Links</h3>
+          <ul className="mt-3 space-y-2 text-[#E9D3B8]">
+            <li>
+              <Link
+                href="/shop"
+                className="hover:text-[#C89F6B] transition-colors"
+              >
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="hover:text-[#C89F6B] transition-colors"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="hover:text-[#C89F6B] transition-colors"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/faq"
+                className="hover:text-[#C89F6B] transition-colors"
+              >
+                FAQs
+              </Link>
+            </li>
           </ul>
         </motion.div>
 
-        {/* Policies */}
+        {/* Contact */}
         <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.3 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">
-            Policies
-          </h3>
-          <ul className="space-y-2 sm:space-y-3 text-sm">
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Shipping Policy</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Returns & Refunds</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Privacy Policy</li>
-            <li className="hover:text-[#D4AF37] transition-colors cursor-pointer">Terms of Service</li>
-          </ul>
+          <h3 className="text-lg font-semibold">Contact</h3>
+          <p className="mt-3 text-sm text-[#E9D3B8]">
+            Email: support@posterly.com
+          </p>
+          <p className="text-sm text-[#E9D3B8]">Phone: +91 98765 43210</p>
         </motion.div>
 
-        {/* Social + Payments */}
+        {/* Socials */}
         <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="flex flex-col"
         >
-          <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Connect</h3>
-          <div className="flex space-x-3 sm:space-x-4 mb-5 sm:mb-6">
-            <a href="#" className="hover:text-[#D4AF37] transition-colors"><FaInstagram size={18} className="sm:size-10"/></a>
-            <a href="#" className="hover:text-[#D4AF37] transition-colors"><FaFacebookF size={18} className="sm:size-10" /></a>
-            <a href="#" className="hover:text-[#D4AF37] transition-colors"><FaTwitter size={18} className="sm:size-10" /></a>
-          </div>
-          <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">We Accept</h3>
-          <div className="flex space-x-3 sm:space-x-4 text-xl sm:text-2xl md:text-3xl">
-            <FaCcVisa />
-            <FaCcMastercard />
+          <h3 className="text-lg font-semibold">Follow Us</h3>
+          <div className="mt-3 flex gap-4">
+            <a
+              href="#"
+              className="p-2 bg-[#C89F6B] rounded-full hover:bg-white hover:text-[#3B2B1A] transition-colors"
+            >
+              <FaFacebookF size={16} />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-[#C89F6B] rounded-full hover:bg-white hover:text-[#3B2B1A] transition-colors"
+            >
+              <FaInstagram size={16} />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-[#C89F6B] rounded-full hover:bg-white hover:text-[#3B2B1A] transition-colors"
+            >
+              <FaTwitter size={16} />
+            </a>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom Note */}
-      <div className="mt-8 sm:mt-10 md:mt-12 text-center text-xs sm:text-sm text-[#FFE1B5]/70 border-t border-[#FFE1B5]/20 pt-5 sm:pt-6">
-        © {new Date().getFullYear()} PosterAura. All rights reserved.
+      {/* Bottom Line */}
+      <div className="mt-12 border-t border-[#6A4E33] pt-6 text-center text-sm text-[#E9D3B8]">
+        © {new Date().getFullYear()} Posterly. All rights reserved. <br />
+        Created by{" "}
+        <a
+          href="https://sixthgenx.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#C89F6B] hover:underline"
+        >
+          SixthGenX
+        </a>
       </div>
     </footer>
   );

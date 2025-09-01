@@ -2,69 +2,59 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Story() {
   return (
-    <section className="w-full bg-[#fdfcf9] text-[#1a1a1a] py-10 md:py-18  px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-12 gap-6 items-center">
+    <section className="w-full bg-[#E9D3B8] py-16 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
         
-        {/* Left: Lifestyle Image */}
+        {/* Left Image */}
         <motion.div
-          initial={{ x: -80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative w-full h-[400px] md:h-[550px] rounded-2xl overflow-hidden shadow-xl border-4 border-[#1a1a1a]/20"
+          className="flex-1 w-full flex justify-center"
         >
-          <Image
-            src="/images/poster1.jpg" // 🔥 replace with real lifestyle poster image
-            alt="Poster in Lifestyle Setting"
-            fill
-            className="object-cover"
-            priority
-          />
+          <div className="relative w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/poster1.jpg" // replace with your image
+              alt="Our Story"
+              fill
+              className="object-cover"
+            />
+          </div>
         </motion.div>
 
-        {/* Right: Story + Specs */}
+        {/* Right Content */}
         <motion.div
-          initial={{ x: 80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="flex-1 text-center md:text-left"
         >
-          {/* Title */}
-          <h2 className="text-4xl md:text-5xl font-serif font-bold">
-            The Story Behind <span className="text-[#d4af37]">“Golden Horizon”</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#3B2B1A]">
+            Our Story
           </h2>
-
-          {/* Emotional Description */}
-          <p className="text-lg text-[#1a1a1a]/80 leading-relaxed">
-            Inspired by the meeting of the earth and sky, “Golden Horizon” captures 
-            the balance between strength and serenity. Each print is a tribute to 
-            moments of stillness that elevate the soul, designed to transform not 
-            just your walls but your state of mind.
+          <p className="mt-4 text-[#6A4E33] leading-relaxed max-w-xl mx-auto md:mx-0">
+            What started as a small passion project has grown into a creative
+            journey to bring unique, high-quality posters to homes everywhere.
+            We believe walls deserve more than plain paint — they deserve
+            stories, emotions, and inspiration. Every poster we create carries
+            a touch of art, love, and authenticity.
           </p>
 
-          {/* Technical Specs */}
-          <div className="space-y-3 mt-6">
-            <h3 className="text-xl font-semibold">Specifications</h3>
-            <ul className="space-y-2">
-              {[
-                "Archival-grade matte paper (310 gsm)",
-                "Fade-resistant pigment inks",
-                "Unframed / Framed options available",
-                "Dimensions: 18x24 in | 24x36 in",
-                "Limited to 50 editions only",
-              ].map((spec, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#d4af37]" />
-                  <span>{spec}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Link href="/about">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-6 px-8 py-3 rounded-2xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
+            >
+              Learn More
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,79 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { FaStar } from "react-icons/fa";
 
 const reviews = [
   {
-    name: "Aarav Mehta",
-    text: "The poster quality is incredible — thick paper, vibrant colors. It feels like a piece of art from a gallery. Totally elevated my study room!",
+    id: 1,
+    name: "Sophie L.",
     rating: 5,
+    message:
+      "Absolutely love the quality! The poster looks even better in person and shipping was fast.",
   },
   {
-    name: "Sneha Raghavan",
-    text: "I was skeptical at first, but when I unboxed it, I genuinely gasped. The print feels premium, and it came safely packed. Worth every rupee.",
-    rating: 5,
-  },
-  {
-    name: "Rohan Kulkarni",
-    text: "What I loved the most was the story behind the art. It adds so much meaning when you hang it on your wall. My living room looks transformed.",
+    id: 2,
+    name: "Arjun M.",
     rating: 4,
+    message:
+      "Beautiful designs that really changed the vibe of my living room. Will order again!",
   },
   {
-    name: "Priya Sharma",
-    text: "This isn’t just a poster — it’s a conversation starter. Friends keep asking me where I got it. Already planning to buy another design!",
+    id: 3,
+    name: "Emily R.",
     rating: 5,
+    message:
+      "The attention to detail is amazing. Every guest who visits compliments the posters.",
+  },
+  {
+    id: 4,
+    name: "Rahul S.",
+    rating: 5,
+    message:
+      "Great customer service and top-notch quality. Highly recommend this shop!",
   },
 ];
 
 export default function Reviews() {
   return (
-    <section className="w-full bg-[#1a1a1a] text-[#fdfcf9] py-10 sm:py-14 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="w-full bg-[#F5E1C8] py-16 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-8 sm:mb-12 md:mb-16"
+          className="text-3xl md:text-4xl font-bold text-[#3B2B1A]"
         >
-          Hear From Our Collectors
+          What Our Customers Say
         </motion.h2>
+        <p className="mt-2 text-[#6A4E33] max-w-xl mx-auto">
+          Real stories from people who’ve decorated their spaces with our posters.
+        </p>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {reviews.map((review, i) => (
             <motion.div
-              key={i}
-              initial={{ y: 80, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              key={review.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-[#fdfcf9]/5 border border-[#fdfcf9]/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-left shadow-md sm:shadow-lg hover:shadow-xl transition-all"
+              whileHover={{ scale: 1.03 }}
+              className="bg-white rounded-2xl shadow-md p-6 flex flex-col text-left"
             >
               {/* Stars */}
-              <div className="flex items-center mb-2 sm:mb-3">
-                {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star
-                    key={idx}
-                    className={`w-4 h-4 sm:w-5 sm:h-5 ${
-                      idx < review.rating ? "text-[#d4af37]" : "text-[#fdfcf9]/30"
-                    }`}
-                    fill={idx < review.rating ? "#d4af37" : "none"}
-                  />
+              <div className="flex text-[#C89F6B] mb-3">
+                {Array.from({ length: review.rating }).map((_, idx) => (
+                  <FaStar key={idx} />
                 ))}
               </div>
 
-              {/* Review Text */}
-              <p className="text-sm sm:text-base text-[#fdfcf9]/80 mb-3 sm:mb-4 leading-relaxed">
-                “{review.text}”
+              {/* Message */}
+              <p className="text-[#3B2B1A] text-sm leading-relaxed">
+                {review.message}
               </p>
 
               {/* Name */}
-              <p className="font-semibold text-base sm:text-lg text-[#d4af37]">
+              <span className="mt-4 font-semibold text-[#6A4E33]">
                 — {review.name}
-              </p>
+              </span>
             </motion.div>
           ))}
         </div>

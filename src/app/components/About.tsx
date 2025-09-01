@@ -1,54 +1,52 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section className="w-full bg-[#481E01] text-[#FFE1B5] py-10 sm:py-14 md:py-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-        
-        {/* Left: Image */}
-        <motion.div
-          initial={{ x: -80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+    <section className="w-full bg-[#F5E1C8] py-20 px-6 md:px-10">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="overflow-hidden rounded-xl sm:rounded-2xl shadow-lg"
+          className="text-3xl md:text-4xl font-bold text-[#3B2B1A]"
         >
-          <img
-            src="/images/poster1.jpg"
-            alt="Our Story"
-            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </motion.div>
+          About Us
+        </motion.h2>
 
-        {/* Right: Content */}
-        <motion.div
-          initial={{ x: 80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="flex flex-col justify-center"
-        >
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 sm:mb-6 leading-snug">
-            About Our Brand
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg leading-relaxed text-[#FFE1B5]/85 mb-4 sm:mb-6">
-            Born in India, our journey began with a simple vision — to bring
-            timeless art into modern homes. Every poster we create is not just
-            decor, but a story of culture, craftsmanship, and meaning.
-          </p>
-          <p className="text-sm sm:text-base md:text-lg leading-relaxed text-[#FFE1B5]/85 mb-6 sm:mb-8">
-            We collaborate with local artists, use premium archival materials,
-            and ensure that every piece feels exclusive, personal, and built to
-            last. When you own one of our posters, you own a fragment of art
-            history — designed to inspire for decades.
-          </p>
-          <button className="bg-[#D4AF37] text-[#481E01] px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-[#FFE1B5] transition-all duration-300">
-            Discover More
-          </button>
-        </motion.div>
+        <p className="mt-4 text-[#6A4E33] max-w-2xl mx-auto leading-relaxed">
+          At <span className="font-semibold text-[#3B2B1A]">Posterly</span>, we
+          believe every wall deserves a story. Our mission is to create
+          high-quality, artistic posters that inspire, motivate, and beautify
+          your living spaces. From minimalistic designs to bold statements, our
+          posters are crafted with love and creativity.
+        </p>
+
+        {/* Stats */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {[
+            { label: "Happy Customers", value: "10K+" },
+            { label: "Posters Sold", value: "25K+" },
+            { label: "Years of Creativity", value: "5+" },
+          ].map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-2xl shadow-md"
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-[#C89F6B]">
+                {stat.value}
+              </h3>
+              <p className="mt-2 text-[#3B2B1A] font-medium">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
