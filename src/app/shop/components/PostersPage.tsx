@@ -15,7 +15,7 @@ interface Poster {
 // Sample posters
 const posters: Poster[] = [
   {
-    id: "1",
+    id: "221",
     name: "Long Shiny Dress",
     colors: "Pink, Yellow, Orange",
     sizes: "S, M, L",
@@ -23,7 +23,7 @@ const posters: Poster[] = [
     image: "/images/poster1.jpg",
   },
   {
-    id: "2",
+    id: "222",
     name: "Bridal White Dress",
     colors: "White",
     sizes: "S, M, L",
@@ -31,7 +31,7 @@ const posters: Poster[] = [
     image: "/images/poster1.jpg",
   },
   {
-    id: "3",
+    id: "223",
     name: "Classic Coat",
     colors: "Black",
     sizes: "S, M, L",
@@ -39,7 +39,7 @@ const posters: Poster[] = [
     image: "/images/poster1.jpg",
   },
   {
-    id: "4",
+    id: "224",
     name: "Elegant Dress",
     colors: "Blue, Pink",
     sizes: "M, L",
@@ -47,7 +47,7 @@ const posters: Poster[] = [
     image: "/images/poster1.jpg",
   },
   {
-    id: "5",
+    id: "225",
     name: "Luxury Gown",
     colors: "Red, Gold",
     sizes: "M, L",
@@ -59,7 +59,7 @@ const posters: Poster[] = [
 // WhatsApp function
 const getWhatsAppLink = (poster: Poster): string => {
   const phoneNumber = "919817612848"; // Replace with your WhatsApp number
-  const message = `Hello, I am interested in ordering:\n\n🖼 ${poster.name}\n🎨 Colors: ${poster.colors}\n📏 Sizes: ${poster.sizes}\n💰 Price: ${poster.price}`;
+  const message = `Hello, I am interested in ordering:\n\n🆔 ID: ${poster.id}\n🖼 ${poster.name}\n🎨 Colors: ${poster.colors}\n📏 Sizes: ${poster.sizes}\n💰 Price: ${poster.price}`;
   return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 };
 
