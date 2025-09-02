@@ -9,10 +9,8 @@ export default function Navbar() {
 
   return (
     <nav className="w-full flex items-center border-b-[2px] border-[#916944] justify-between px-6 md:px-8 py-4 bg-[#FDF1E5] relative">
-    
-      <div className="text-2xl font-semibold   text-[#3B2B1A]">Posterly</div>
+       <div className="lg:text-[30px] text-2xl font-semibold cursor-pointer   text-[#3B2B1A]"> <Link href="/">Posterly</Link></div>
 
-      
       <div className="hidden md:flex space-x-10 text-[#6A4E33] font-medium">
         {/* <Link href="/">Home</Link> */}
         {/* <Link href="/shop">Shop</Link>
@@ -21,7 +19,6 @@ export default function Navbar() {
         <Link href="/contact">Contact</Link> */}
       </div>
 
-    
       <div className="flex items-center space-x-4">
         {/* Search (desktop only) */}
         {/* <div className="hidden md:flex items-center bg-white rounded-full px-3 py-2 shadow-sm">
@@ -33,12 +30,12 @@ export default function Navbar() {
           />
         </div> */}
 
-       
-        <button className="p-2 rounded-full border border-[#3B2B1A]">
-          <ShoppingCart className="w-5 h-5 text-[#3B2B1A]" />
-        </button>
+        <Link href={"/shop"}>
+          <button className="p-2 cursor-pointer rounded-full border border-[#3B2B1A]">
+            <ShoppingCart className="w-5 h-5 text-[#3B2B1A]" />
+          </button>
+        </Link>
 
-     
         {/* <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 rounded-full border border-[#3B2B1A]"
@@ -51,7 +48,6 @@ export default function Navbar() {
         </button> */}
       </div>
 
-     
       {mobileOpen && (
         <div className="absolute top-full left-0 w-full bg-[#FDF1E5] shadow-md flex flex-col items-center py-6 space-y-6 text-[#3B2B1A] font-medium md:hidden z-50">
           {/* <Link href="/" onClick={() => setMobileOpen(false)}>Home</Link>

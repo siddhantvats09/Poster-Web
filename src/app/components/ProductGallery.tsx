@@ -8,28 +8,28 @@ import Link from "next/link";
 
 const products = [
   {
-    id: 1,
+    id: 2341,
     name: "Abstract Art Poster",
     price: "$25",
     image: "/images/poster1.jpg",
     description: "A bold abstract art piece to elevate your living space.",
   },
   {
-    id: 2,
+    id: 2351,
     name: "Minimalist Line Art",
     price: "$20",
     image: "/images/poster1.jpg",
     description: "Clean and simple line art with a modern aesthetic.",
   },
   {
-    id: 3,
+    id: 2361,
     name: "Vintage Travel Poster",
     price: "$30",
     image: "/images/poster1.jpg",
     description: "Classic vintage-style travel poster with retro vibes.",
   },
   {
-    id: 4,
+    id: 2371,
     name: "Modern Typography",
     price: "$22",
     image: "/images/poster1.jpg",
@@ -168,12 +168,14 @@ export default function ProductGallery() {
                 <a
                   href={`https://wa.me/919817612848?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(
                     selectedProduct.name
-                  )}%20priced%20at%20${encodeURIComponent(
+                  )}%20(ID:%20${encodeURIComponent(
+                    selectedProduct.id
+                  )})%20priced%20at%20${encodeURIComponent(
                     selectedProduct.price
                   )}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-2 px-5 py-2 rounded-xl bg-[#3B2B1A] text-white text-sm sm:text-base font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
+                  className="inline-block mt-4 px-6 py-2 rounded-xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
                 >
                   Buy Now
                 </a>
@@ -182,13 +184,13 @@ export default function ProductGallery() {
               {/* Navigation Arrows */}
               <button
                 onClick={handlePrev}
-                className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
+                className="absolute left-3 sm:left-4 top-1/2 border-[1px] border-[#3B2B1A] transform -translate-y-1/2 p-2 rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
               >
-                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#3B2B1A]" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6  text-[#3B2B1A]" />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
+                className="absolute right-3 sm:right-4 top-1/2  border-[1px] border-[#3B2B1A] transform -translate-y-1/2 p-2 rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#3B2B1A]" />
               </button>
