@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 // Poster type
 interface Poster {
@@ -10,6 +11,7 @@ interface Poster {
   sizes: string;
   price: string;
   image: string;
+  orientation: string;
 }
 
 // Sample posters
@@ -21,6 +23,7 @@ const posters: Poster[] = [
     sizes: "S, M, L",
     price: "1,200 ₹",
     image: "/images/poster1.jpg",
+    orientation: "portrait",
   },
   {
     id: "222",
@@ -28,7 +31,8 @@ const posters: Poster[] = [
     colors: "White",
     sizes: "S, M, L",
     price: "1,200 ₹",
-    image: "/images/poster1.jpg",
+    image: "/images/poster2.jpg",
+    orientation: "portrait",
   },
   {
     id: "223",
@@ -36,7 +40,8 @@ const posters: Poster[] = [
     colors: "Black",
     sizes: "S, M, L",
     price: "1,200 ₹",
-    image: "/images/poster1.jpg",
+    image: "/images/poster3.jpg",
+    orientation: "portrait",
   },
   {
     id: "224",
@@ -44,7 +49,8 @@ const posters: Poster[] = [
     colors: "Blue, Pink",
     sizes: "M, L",
     price: "1,500 ₹",
-    image: "/images/poster1.jpg",
+    image: "/images/poster4.jpg",
+    orientation: "portrait",
   },
   {
     id: "225",
@@ -52,7 +58,125 @@ const posters: Poster[] = [
     colors: "Red, Gold",
     sizes: "M, L",
     price: "1,800 ₹",
-    image: "/images/poster1.jpg",
+    image: "/images/poster5.jpg",
+    orientation: "portrait",
+  },
+  {
+    id: "225115",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/poster6.jpg",
+    orientation: "portrait",
+  },
+  {
+    id: "22432",
+    name: "Elegant Dress",
+    colors: "Blue, Pink",
+    sizes: "M, L",
+    price: "1,500 ₹",
+    image: "/images/big/3.png",
+    orientation: "landscape",
+  },
+  {
+    id: "225990",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/7.png",
+    orientation: "landscape",
+  },
+  {
+    id: "22582",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/6.png",
+    orientation: "landscape",
+  },
+  {
+    id: "22522",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/poster7.jpg",
+    orientation: "portrait",
+  },
+  {
+    id: "22523",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/poster8.jpg",
+    orientation: "portrait",
+  },
+  {
+    id: "225221",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/poster9.jpg",
+    orientation: "portrait",
+  },
+    {
+    id: "224998",
+    name: "Elegant Dress",
+    colors: "Blue, Pink",
+    sizes: "M, L",
+    price: "1,500 ₹",
+    image: "/images/big/11.png",
+    orientation: "landscape",
+  },
+  {
+    id: "225982",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/13.png",
+    orientation: "landscape",
+  },
+  {
+    id: "2257",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/14.png",
+    orientation: "landscape",
+  },
+  {
+    id: "22598",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/15.png",
+    orientation: "landscape",
+  },
+  {
+    id: "22587",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/12.png",
+    orientation: "landscape",
+  },
+  {
+    id: "2255437",
+    name: "Luxury Gown",
+    colors: "Red, Gold",
+    sizes: "M, L",
+    price: "1,800 ₹",
+    image: "/images/big/9.png",
+    orientation: "landscape",
   },
 ];
 
@@ -64,6 +188,8 @@ const getWhatsAppLink = (poster: Poster): string => {
 };
 
 export default function PostersPage() {
+
+   const [selectedPoster, setSelectedPoster] = useState<Poster | null>(null);
   return (
     <div className="bg-[#FDF1E5] min-h-screen px-6 lg:px-20 py-12">
       {/* Title */}
@@ -76,10 +202,15 @@ export default function PostersPage() {
         {posters.map((poster) => (
           <div
             key={poster.id}
-            className="bg-white border border-[#E0C9A6] shadow-lg hover:shadow-xl transition rounded-lg overflow-hidden flex flex-col"
+            className="bg-white border border-[#E0C9A6] shadow-lg hover:shadow-xl transition rounded-lg overflow-hidden flex flex-col cursor-pointer"
+            onClick={() => setSelectedPoster(poster)}
           >
-            {/* Poster Image (reduced size) */}
-            <div className="relative w-full h-80 bg-white flex items-center justify-center">
+            {/* Poster Image */}
+            <div
+              className={`relative w-full ${
+                poster.orientation === "portrait" ? "h-[450px]" : "h-64"
+              } bg-white flex items-center justify-center`}
+            >
               <Image
                 src={poster.image}
                 alt={poster.name}
@@ -94,8 +225,8 @@ export default function PostersPage() {
                 <p className="uppercase tracking-wide text-[#C89F6B] font-bold text-lg">
                   {poster.name}
                 </p>
-                <p className="text-base"> Colors: {poster.colors}</p>
-                <p className="text-base"> Sizes: {poster.sizes}</p>
+                <p className="text-base">Colors: {poster.colors}</p>
+                <p className="text-base">Sizes: {poster.sizes}</p>
                 <p className="font-semibold text-[#3B2B1A] text-lg">
                   Rs. {poster.price}
                 </p>
@@ -107,6 +238,7 @@ export default function PostersPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-5 inline-block text-center bg-[#3B2B1A] text-[#FDF1E5] font-semibold px-6 py-3 shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition rounded-lg text-lg"
+                onClick={(e) => e.stopPropagation()} // prevent modal on button click
               >
                 Order Now
               </a>
@@ -114,6 +246,34 @@ export default function PostersPage() {
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {selectedPoster && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedPoster(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={selectedPoster.image}
+              alt={selectedPoster.name}
+              width={1200}
+              height={900}
+              className="object-contain w-full h-full"
+            />
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedPoster(null)}
+              className="absolute top-4 right-4 bg-black text-white rounded-full px-3 py-1 text-sm"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

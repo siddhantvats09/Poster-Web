@@ -11,28 +11,28 @@ const products = [
     id: 2341,
     name: "Abstract Art Poster",
     price: "$25",
-    image: "/images/poster1.jpg",
+    image: "/images/poster2.jpg",
     description: "A bold abstract art piece to elevate your living space.",
   },
   {
     id: 2351,
     name: "Minimalist Line Art",
     price: "$20",
-    image: "/images/poster1.jpg",
+    image: "/images/poster5.jpg",
     description: "Clean and simple line art with a modern aesthetic.",
   },
   {
     id: 2361,
     name: "Vintage Travel Poster",
     price: "$30",
-    image: "/images/poster1.jpg",
+    image: "/images/poster4.jpg",
     description: "Classic vintage-style travel poster with retro vibes.",
   },
   {
     id: 2371,
     name: "Modern Typography",
     price: "$22",
-    image: "/images/poster1.jpg",
+    image: "/images/poster8.jpg",
     description: "Trendy typography design to add a contemporary feel.",
   },
 ];
@@ -123,13 +123,13 @@ export default function ProductGallery() {
       <AnimatePresence>
         {selectedProduct && (
           <motion.div
-            className="fixed inset-0 bg-[#E9D3B8]/85 flex items-center justify-center z-50 px-4 sm:px-6"
+            className="fixed inset-0 bg-[#342e27]/80 flex items-center justify-center z-50 px-4 sm:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white rounded-2xl shadow-lg w-full max-w-md sm:max-w-lg relative p-4 sm:p-6"
+              className="bg-[#FDF1E5] rounded-2xl shadow-lg w-full max-w-md sm:max-w-lg relative p-4 sm:p-6"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}

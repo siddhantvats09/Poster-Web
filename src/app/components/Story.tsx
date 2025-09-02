@@ -19,7 +19,7 @@ export default function Story() {
         >
           <div className="relative w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/poster1.jpg" // replace with your image
+              src="/images/story2.jpg" // replace with your image
               alt="Our Story"
               fill
               className="object-cover"
@@ -46,7 +46,7 @@ export default function Story() {
             a touch of art, love, and authenticity.
           </p>
 
-          <Link href="/about">
+          {/* <Link href="/about">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -54,7 +54,7 @@ export default function Story() {
             >
               Learn More
             </motion.button>
-          </Link>
+          </Link> */}
         </motion.div>
       </div>
     </section>

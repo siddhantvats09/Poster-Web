@@ -49,7 +49,7 @@ export default function Hero() {
       <div className="flex-1 relative mt-12 md:mt-0 md:ml-12 flex justify-center">
         <div className="relative w-[280px] h-[350px] md:w-[500px] md:h-[550px] overflow-hidden rounded-[60px] md:rounded-[100px] md:rounded-br-[200px] shadow-xl">
           <Image
-            src="/images/poster1.jpg"
+            src="/images/poster6.jpg"
             alt="Poster Hero"
             fill
             className="object-cover"

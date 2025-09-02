@@ -1,39 +1,62 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const relatedProducts = [
   {
     id: 1,
     name: "Nature Landscape",
     price: "$28",
-    image: "/images/poster1.jpg",
+    image: "/images/big/1.png",
   },
   {
     id: 2,
     name: "Modern Shapes",
     price: "$22",
-    image: "/images/poster1.jpg",
+    image: "/images/big/2.png",
   },
   {
     id: 3,
     name: "Vintage Portrait",
     price: "$30",
-    image: "/images/poster1.jpg",
+    image: "/images/big/3.png",
   },
   {
     id: 4,
     name: "Typography Design",
     price: "$24",
-    image: "/images/poster1.jpg",
+    image: "/images/big/5.png",
   },
 ];
 
 export default function Related() {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const handleNext = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex + 1) % relatedProducts.length);
+    }
+  };
+
+  const handlePrev = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex(
+        (selectedIndex - 1 + relatedProducts.length) % relatedProducts.length
+      );
+    }
+  };
+
+  const handleClose = () => setSelectedIndex(null);
+
+  const selectedProduct =
+    selectedIndex !== null ? relatedProducts[selectedIndex] : null;
+
   return (
-    <section className="w-full bg-[#E9D3B8] py-16 px-6 md:px-10">
+    <section className="w-full bg-[#E9D3B8] py-2 md:py-6 px-6 md:px-10">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
@@ -50,7 +73,7 @@ export default function Related() {
         </p>
 
         {/* Grid */}
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {relatedProducts.map((product, i) => (
             <motion.div
               key={product.id}
@@ -59,7 +82,8 @@ export default function Related() {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
+              className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col cursor-pointer"
+              onClick={() => setSelectedIndex(i)}
             >
               <div className="relative w-full h-52">
                 <Image
@@ -90,6 +114,81 @@ export default function Related() {
           </motion.button>
         </Link>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedProduct && (
+          <motion.div
+            className="fixed inset-0 bg-[#342e27]/80 flex items-center justify-center z-50 px-4 sm:px-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-[#FDF1E5] rounded-2xl shadow-lg w-full max-w-md sm:max-w-lg relative p-4 sm:p-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={handleClose}
+                className="absolute top-3 z-9 right-3 p-2 border border-[#3B2B1A] rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
+              >
+                <X className="w-5 h-5 text-[#3B2B1A]" />
+              </button>
+
+              {/* Product Image */}
+              <div className="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden bg-[#FDF1E5] flex items-center justify-center">
+                <Image
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  fill
+                  className="object-contain w-full h-auto"
+                />
+              </div>
+
+              {/* Product Info */}
+              <div className="mt-4 text-center px-2">
+                <h3 className="text-lg sm:text-xl font-bold text-[#3B2B1A]">
+                  {selectedProduct.name}
+                </h3>
+                <p className="mt-2 text-lg font-semibold text-[#3B2B1A]">
+                  {selectedProduct.price}
+                </p>
+                <a
+                  href={`https://wa.me/919817612848?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(
+                    selectedProduct.name
+                  )}%20(ID:%20${encodeURIComponent(
+                    selectedProduct.id
+                  )})%20priced%20at%20${encodeURIComponent(
+                    selectedProduct.price
+                  )}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 px-6 py-2 rounded-xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
+                >
+                  Buy Now
+                </a>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 border border-[#3B2B1A] rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#3B2B1A]" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 border border-[#3B2B1A] rounded-full bg-[#FDF1E5] hover:bg-[#E9D3B8] transition"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#3B2B1A]" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
