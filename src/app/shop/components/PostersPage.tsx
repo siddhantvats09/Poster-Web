@@ -58,7 +58,7 @@ const posters: Poster[] = [
 
 // WhatsApp function
 const getWhatsAppLink = (poster: Poster): string => {
-  const phoneNumber = "919876543210"; // Replace with your WhatsApp number
+  const phoneNumber = "919817612848"; // Replace with your WhatsApp number
   const message = `Hello, I am interested in ordering:\n\n🖼 ${poster.name}\n🎨 Colors: ${poster.colors}\n📏 Sizes: ${poster.sizes}\n💰 Price: ${poster.price}`;
   return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 };
@@ -80,14 +80,13 @@ export default function PostersPage() {
           >
             {/* Poster Image (reduced size) */}
             <div className="relative w-full h-80 bg-white flex items-center justify-center">
-  <Image
-    src={poster.image}
-    alt={poster.name}
-    fill
-    className="object-contain p-2"
-  />
-</div>
-
+              <Image
+                src={poster.image}
+                alt={poster.name}
+                fill
+                className="object-contain p-2"
+              />
+            </div>
 
             {/* Poster Details */}
             <div className="p-5 flex-1 flex flex-col justify-between">
@@ -98,7 +97,7 @@ export default function PostersPage() {
                 <p className="text-base"> Colors: {poster.colors}</p>
                 <p className="text-base"> Sizes: {poster.sizes}</p>
                 <p className="font-semibold text-[#3B2B1A] text-lg">
-                Rs. {poster.price}
+                  Rs. {poster.price}
                 </p>
               </div>
 
