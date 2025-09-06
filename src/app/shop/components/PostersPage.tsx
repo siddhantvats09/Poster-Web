@@ -217,7 +217,7 @@ const posters: Poster[] = [
     sizes: "M, L",
     price: "1,600 ₹",
     image: "/images/story.jpg",
-    orientation: "landscape",
+   orientation: "portrait",
   },
   {
     id: "021",
@@ -227,7 +227,7 @@ const posters: Poster[] = [
     sizes: "M, L",
     price: "1,200 ₹",
     image: "/images/story2.jpg",
-    orientation: "landscape",
+    orientation: "portrait",
   },
   // ---- Big folder posters ----
   {
