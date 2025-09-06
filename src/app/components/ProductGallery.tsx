@@ -8,34 +8,35 @@ import Link from "next/link";
 
 const products = [
   {
-    id: 2341,
-    name: "Abstract Art Poster",
-    price: "$25",
+    id: "002",
+    name: "Rebuild It",
+    price: "249 ₹",
     image: "/images/poster2.jpg",
-    description: "A bold abstract art piece to elevate your living space.",
+    description: "A motivational poster with a bold design to inspire rebuilding and growth.",
   },
   {
-    id: 2351,
-    name: "Minimalist Line Art",
-    price: "$20",
+    id: "005",
+    name: "Fight Club Lineup",
+    price: "249 ₹",
     image: "/images/poster5.jpg",
-    description: "Clean and simple line art with a modern aesthetic.",
+    description: "Dynamic Fight Club inspired lineup artwork, perfect for bold interiors.",
   },
   {
-    id: 2361,
-    name: "Vintage Travel Poster",
-    price: "$30",
+    id: "004",
+    name: "Discipline Grind",
+    price: "249 ₹",
     image: "/images/poster4.jpg",
-    description: "Classic vintage-style travel poster with retro vibes.",
+    description: "Powerful motivational piece emphasizing discipline and relentless grind.",
   },
   {
-    id: 2371,
-    name: "Modern Typography",
-    price: "$22",
+    id: "008",
+    name: "Market Hustler",
+    price: "249 ₹",
     image: "/images/poster8.jpg",
-    description: "Trendy typography design to add a contemporary feel.",
+    description: "A sleek design capturing the energy and hustle of the modern marketplace.",
   },
 ];
+
 
 export default function ProductGallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -165,20 +166,12 @@ export default function ProductGallery() {
                 </p>
 
                 {/* Buy Now (WhatsApp) */}
-                <a
-                  href={`https://wa.me/919817612848?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(
-                    selectedProduct.name
-                  )}%20(ID:%20${encodeURIComponent(
-                    selectedProduct.id
-                  )})%20priced%20at%20${encodeURIComponent(
-                    selectedProduct.price
-                  )}.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link href={`posters/${selectedProduct.id}`}
+                 
                   className="inline-block mt-4 px-6 py-2 rounded-xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
                 >
                   Buy Now
-                </a>
+                </Link>
               </div>
 
               {/* Navigation Arrows */}

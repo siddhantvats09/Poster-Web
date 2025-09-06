@@ -1,24 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
-// Poster type
-interface Poster {
-  id: string;
-  name: string;
-  colors: string;
-  sizes: string;
-  price: string;
-  image: string;
-  orientation: string;
-  material: string;
-}
-
-// Sample posters
-const posters: Poster[] = [
-  
+// Posters JSON
+const posters = [
+  {
+    id: "001",
+    name: "Men Are Brave",
+    material: "Acrylic Sheet + Fiber",
+    colors: "Red, Black",
+    sizes: "M, L",
+    price: "1,000 ₹",
+    image: "/images/poster1.jpg",
+    orientation: "portrait",
+  },
   {
     id: "002",
     name: "Rebuild It",
@@ -77,16 +76,6 @@ const posters: Poster[] = [
     sizes: "M, L",
     price: "1,200 ₹",
     image: "/images/poster7.jpg",
-    orientation: "portrait",
-  },
-  {
-    id: "001",
-    name: "Men Are Brave",
-    material: "Acrylic Sheet + Fiber",
-    colors: "Red, Black",
-    sizes: "M, L",
-    price: "1,000 ₹",
-    image: "/images/poster1.jpg",
     orientation: "portrait",
   },
   {
@@ -229,7 +218,6 @@ const posters: Poster[] = [
     image: "/images/story2.jpg",
     orientation: "landscape",
   },
-  // ---- Big folder posters ----
   {
     id: "022",
     name: "Heroes Collage",
@@ -382,100 +370,161 @@ const posters: Poster[] = [
   },
 ];
 
+const sizeOptions = [
+  { label: "A4", price: 249 },
+  { label: "A3", price: 399 },
+  { label: 'Inch 28" × 20"', price: 849 },
+];
 
-// WhatsApp function
-const getWhatsAppLink = (poster: Poster): string => {
-  const phoneNumber = "919817612848"; // Replace with your WhatsApp number
-  const message = `Hello, I am interested in ordering:\n\n🆔 ID: ${poster.id}\n🖼 ${poster.name}\n🎨 Colors: ${poster.colors}\n📏 Sizes: ${poster.sizes}\n💰 Price: ${poster.price}`;
-  return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-};
+// 🔹 Component for showing 5 random posters
+function RelatedPosters({ currentId }: { currentId: string }) {
+  const router = useRouter();
 
-export default function PostersPage() {
+  // Get 5 random posters except current one
+  const related = posters
+    .filter((p) => p.id !== currentId)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 5);
 
-   const [selectedPoster, setSelectedPoster] = useState<Poster | null>(null);
   return (
-    <div className="bg-[#FDF1E5] min-h-screen px-6 lg:px-20 py-12">
-      {/* Title */}
-      <h1 className="text-center text-3xl md:text-4xl font-bold text-[#3B2B1A] mb-12">
-        Explore Our Posters
-      </h1>
-
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posters.map((poster) => (
+    <div className="mt-16">
+      <h2 className="text-2xl font-bold text-[#3B2B1A] mb-6">
+        You may also like
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {related.map((poster) => (
           <div
             key={poster.id}
-            className="bg-white border border-[#E0C9A6] shadow-lg hover:shadow-xl transition rounded-lg overflow-hidden flex flex-col cursor-pointer"
-            onClick={() => setSelectedPoster(poster)}
+            className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col"
           >
-            {/* Poster Image */}
-            <div
-              className={`relative w-full ${
-                poster.orientation === "portrait" ? "h-[450px]" : "h-64"
-              } bg-white flex items-center justify-center`}
-            >
+            <div className="relative w-full h-48">
               <Image
                 src={poster.image}
                 alt={poster.name}
                 fill
-                className="object-contain p-2"
+                className="object-cover"
               />
             </div>
-
-            {/* Poster Details */}
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div className="text-gray-800 space-y-2">
-                <p className="uppercase tracking-wide text-[#C89F6B] font-bold text-lg">
-                  {poster.name}
-                </p>
-                <p className="text-base">Colors: {poster.colors}</p>
-                <p className="text-base">Sizes: {poster.sizes}</p>
-                <p className="font-semibold text-[#3B2B1A] text-lg">
-                  Rs. {poster.price}
-                </p>
-              </div>
-
-              {/* Order Now Button */}
-              <Link href={`posters/${poster.id}`}
-                
-                className="mt-5 inline-block text-center bg-[#3B2B1A] text-[#FDF1E5] font-semibold px-6 py-3 shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition rounded-lg text-lg"
-                // prevent modal on button click
+            <div className="p-4 flex-1 flex flex-col">
+              <h3 className="font-semibold text-[#3B2B1A] mb-2">
+                {poster.name}
+              </h3>
+              <p className="text-sm text-[#6A4E33] mb-4">{poster.price}</p>
+              <button
+                onClick={() => router.push(`/posters/${poster.id}`)}
+                className="mt-auto px-4 py-2 rounded-full bg-[#3B2B1A] text-white font-medium hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition"
               >
-                Order Now
-              </Link>
+                Buy Now
+              </button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Modal */}
-     {selectedPoster && (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-    onClick={() => setSelectedPoster(null)}
-  >
-    <div
-      className="relative max-w-[90vw] max-h-[90vh] bg-white rounded-lg flex items-center justify-center"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <Image
-        src={selectedPoster.image}
-        alt={selectedPoster.name}
-        width={1200}
-        height={900}
-        className="object-contain max-w-full max-h-[90vh]"
-      />
-      {/* Close button */}
-      <button
-        onClick={() => setSelectedPoster(null)}
-        className="absolute top-4 right-4 bg-black text-white rounded-full px-3 py-1 text-sm"
-      >
-        ✕
-      </button>
     </div>
-  </div>
-)}
+  );
+}
 
-    </div>
+export default function PosterDetail() {
+  const params = useParams();
+  const id = Array.isArray(params?.id) ? params.id[0] : (params?.id as string);
+
+  const poster = posters.find((p) => p.id === id);
+
+  const [selectedPrice, setSelectedPrice] = useState(sizeOptions[0].price);
+
+  if (!poster) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-[#FDF1E5]">
+        <p className="text-2xl font-bold text-[#3B2B1A]">
+          Poster not found! 🚫
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <section className="bg-[#FDF1E5] min-h-screen px-6 md:px-12 py-12">
+      <div className="flex flex-col lg:flex-row gap-6 md:gap-12">
+        {/* Poster Image */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="overflow-hidden rounded-[10px] shadow-2xl inline-block">
+            <Image
+              src={poster.image}
+              alt={poster.name}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-auto max-w-full rounded-[10px]"
+            />
+          </div>
+        </div>
+
+        {/* Poster Info */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#3B2B1A] mb-4">
+            {poster.name}
+          </h1>
+
+          <p className="text-lg text-[#6A4E33] mb-6">{poster.material}</p>
+
+          {/* Price */}
+          <p className="text-2xl font-semibold text-[#C89F6B] mb-6">
+            ₹ {selectedPrice}
+          </p>
+
+          {/* Size Buttons */}
+          <div className="flex gap-4 mb-6">
+            {sizeOptions.map((option) => (
+              <button
+                key={option.label}
+                onClick={() => setSelectedPrice(option.price)}
+                className={`px-6 py-2 rounded-full border transition font-medium
+                ${
+                  selectedPrice === option.price
+                    ? "bg-[#3B2B1A] text-white border-[#3B2B1A]"
+                    : "bg-white text-[#3B2B1A] border-[#C89F6B] hover:bg-[#C89F6B] hover:text-[#3B2B1A]"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Quality Info */}
+          <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 className="text-xl font-semibold text-[#3B2B1A] mb-4">
+              Quality
+            </h2>
+            <ul className="list-disc list-inside text-[#6A4E33] space-y-2">
+              <li>High quality paper</li>
+              <li>Plastic sheet</li>
+              <li>Fiber sheet</li>
+            </ul>
+          </div>
+
+          {/* CTA */}
+          <a
+            href={`https://wa.me/919817612848?text=${encodeURIComponent(
+              `Hello, I want to order this poster:\n\n` +
+                `🆔 ID: ${poster.id}\n` +
+                `🖼️ Name: ${poster.name}\n` +
+                `📏 Size: ${
+                  sizeOptions.find((s) => s.price === selectedPrice)?.label
+                }\n` +
+                `Please confirm availability.`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="px-8 py-3 rounded-full bg-[#3B2B1A] text-white font-medium hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition">
+              Order Now
+            </button>
+          </a>
+        </div>
+      </div>
+
+      {/* Related Posters */}
+      <RelatedPosters currentId={poster.id} />
+    </section>
   );
 }

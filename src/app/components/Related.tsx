@@ -8,30 +8,31 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const relatedProducts = [
   {
-    id: 1,
-    name: "Nature Landscape",
-    price: "$28",
+    id: "022",
+    name: "Heroes Collage",
+    price: "449 ₹",
     image: "/images/big/1.png",
   },
   {
-    id: 2,
-    name: "Modern Shapes",
-    price: "$22",
+    id: "023",
+    name: "Marvel Faces Grid",
+    price: "449 ₹",
     image: "/images/big/2.png",
   },
   {
-    id: 3,
-    name: "Vintage Portrait",
-    price: "$30",
+    id: "024",
+    name: "Ironman Collage",
+    price: "449 ₹",
     image: "/images/big/3.png",
   },
   {
-    id: 4,
-    name: "Typography Design",
-    price: "$24",
+    id: "026",
+    name: "Black Widow Team",
+    price: "449 ₹",
     image: "/images/big/5.png",
   },
 ];
+
 
 export default function Related() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -156,20 +157,12 @@ export default function Related() {
                 <p className="mt-2 text-lg font-semibold text-[#3B2B1A]">
                   {selectedProduct.price}
                 </p>
-                <a
-                  href={`https://wa.me/919817612848?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(
-                    selectedProduct.name
-                  )}%20(ID:%20${encodeURIComponent(
-                    selectedProduct.id
-                  )})%20priced%20at%20${encodeURIComponent(
-                    selectedProduct.price
-                  )}.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link href={`/posters/${selectedProduct.id}`}
+                  
                   className="inline-block mt-4 px-6 py-2 rounded-xl bg-[#3B2B1A] text-white font-medium shadow-md hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition-colors"
                 >
                   Buy Now
-                </a>
+                </Link>
               </div>
 
               {/* Navigation Arrows */}
