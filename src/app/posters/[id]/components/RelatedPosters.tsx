@@ -454,7 +454,7 @@ export default function PosterDetail() {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-auto w-auto max-w-full rounded-[10px]"
+              className="h-auto w-auto max-h-[600px] min-h-[300px] object-contain rounded-[10px]"
             />
           </div>
         </div>
@@ -496,9 +496,8 @@ export default function PosterDetail() {
               Quality
             </h2>
             <ul className="list-disc list-inside text-[#6A4E33] space-y-2">
-              <li>High quality paper</li>
-              <li>Plastic sheet</li>
-              <li>Fiber sheet</li>
+              <li>Acryllic Sheet</li>
+              <li>Made of high quality Fiber Sheet</li>
             </ul>
           </div>
 

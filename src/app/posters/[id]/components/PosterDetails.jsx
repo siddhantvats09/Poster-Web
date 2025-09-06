@@ -373,7 +373,7 @@ const posters = [
 const sizeOptions = [
   { label: "A4", price: 249 },
   { label: "A3", price: 399 },
-  { label: 'Inches 28 × 20', price: 849 },
+  { label: 'Inch 28"×20"', price: 849 },
 ];
 
 export default function PosterDetail() {
@@ -445,9 +445,8 @@ export default function PosterDetail() {
             Quality
           </h2>
           <ul className="list-disc list-inside text-[#6A4E33] space-y-2">
-            <li>High quality paper</li>
-            <li>Plastic sheet</li>
-            <li>Fiber sheet</li>
+            <li>Acryllic Sheet</li>
+            <li>Made of high quality Fiber Sheet</li>
           </ul>
         </div>
 

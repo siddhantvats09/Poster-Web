@@ -431,7 +431,7 @@ export default function PostersPage() {
                 <p className="text-base">Colors: {poster.colors}</p>
                 <p className="text-base">Sizes: {poster.sizes}</p>
                 <p className="font-semibold text-[#3B2B1A] text-lg">
-                  Rs. {poster.price}
+                  Rs. 399
                 </p>
               </div>
 
