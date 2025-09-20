@@ -10,28 +10,28 @@ const products = [
   {
     id: "002",
     name: "Rebuild It",
-    price: "249 ₹",
+    price: "299 ₹",
     image: "/images/poster2.jpg",
     description: "A motivational poster with a bold design to inspire rebuilding and growth.",
   },
   {
     id: "005",
     name: "Fight Club Lineup",
-    price: "249 ₹",
+    price: "299 ₹",
     image: "/images/poster5.jpg",
     description: "Dynamic Fight Club inspired lineup artwork, perfect for bold interiors.",
   },
   {
     id: "004",
     name: "Discipline Grind",
-    price: "249 ₹",
+    price: "299 ₹",
     image: "/images/poster4.jpg",
     description: "Powerful motivational piece emphasizing discipline and relentless grind.",
   },
   {
     id: "008",
     name: "Market Hustler",
-    price: "249 ₹",
+    price: "299 ₹",
     image: "/images/poster8.jpg",
     description: "A sleek design capturing the energy and hustle of the modern marketplace.",
   },
@@ -102,7 +102,8 @@ export default function ProductGallery() {
                 <h3 className="text-lg font-medium text-[#3B2B1A]">
                   {product.name}
                 </h3>
-                <p className=" text-[#6A4E33]">{product.price}</p>
+                <p className=" text-[#6A4E33]">₹ 299</p>
+                <p className=" text-[#6A4E33]">Size : A4</p>
               </div>
             </motion.div>
           ))}

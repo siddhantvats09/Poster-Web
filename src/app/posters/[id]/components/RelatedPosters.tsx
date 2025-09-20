@@ -270,7 +270,7 @@ const posters = [
   },
   {
     id: "027",
-    name: "John Wick Cool",
+    name: "Dr. Strange Magic",
     material: "Acrylic Sheet + Fiber",
     colors: "Black, Grey",
     sizes: "M, L",
@@ -371,9 +371,9 @@ const posters = [
 ];
 
 const sizeOptions = [
-  { label: "A4", price: 249 },
-  { label: "A3", price: 399 },
-  { label: 'Inch 28" × 20"', price: 849 },
+  { label: "A4", price: 299 },
+  { label: 'Inch 18" × 12"', price: 449 },
+  { label: 'Inch 18" × 24" A1', price: 999 },
 ];
 
 // 🔹 Component for showing 5 random posters
@@ -409,7 +409,7 @@ function RelatedPosters({ currentId }: { currentId: string }) {
               <h3 className="font-semibold text-[#3B2B1A] mb-2">
                 {poster.name}
               </h3>
-              <p className="text-sm text-[#6A4E33] mb-4">{poster.price}</p>
+              <p className="text-sm text-[#6A4E33] mb-4">Rs. 449</p>
               <button
                 onClick={() => router.push(`/posters/${poster.id}`)}
                 className="mt-auto px-4 py-2 rounded-full bg-[#3B2B1A] text-white font-medium hover:bg-[#C89F6B] hover:text-[#3B2B1A] transition"
@@ -465,7 +465,7 @@ export default function PosterDetail() {
             {poster.name}
           </h1>
 
-          <p className="text-lg text-[#6A4E33] mb-6">{poster.material}</p>
+          <p className="text-lg text-[#6A4E33] mb-6">Premium Acrylic Sheet</p>
 
           {/* Price */}
           <p className="text-2xl font-semibold text-[#C89F6B] mb-6">
@@ -496,8 +496,8 @@ export default function PosterDetail() {
               Quality
             </h2>
             <ul className="list-disc list-inside text-[#6A4E33] space-y-2">
-              <li>Acryllic Sheet</li>
-              <li>Made of high quality Fiber Sheet</li>
+              <li>5mm Clear / Frosted Acrylic Sheet for rigidity and premium feel.</li>
+              <li>UV Printing ensures sharp details, glossy finish, and durability.</li>
             </ul>
           </div>
 

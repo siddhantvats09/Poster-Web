@@ -428,10 +428,10 @@ export default function PostersPage() {
                 <p className="uppercase tracking-wide text-[#C89F6B] font-bold text-lg">
                   {poster.name}
                 </p>
-                <p className="text-base">Colors: {poster.colors}</p>
-                <p className="text-base">Sizes: {poster.sizes}</p>
+                {/* <p className="text-base">Colors: {poster.colors}</p> */}
+                <p className="text-base">Sizes: 18 x 12 Inches</p>
                 <p className="font-semibold text-[#3B2B1A] text-lg">
-                  Rs. 399
+                  Rs. 449
                 </p>
               </div>
 

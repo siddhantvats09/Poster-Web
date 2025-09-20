@@ -10,25 +10,25 @@ const relatedProducts = [
   {
     id: "022",
     name: "Heroes Collage",
-    price: "449 ₹",
+    price: "449 ",
     image: "/images/big/1.png",
   },
   {
     id: "023",
     name: "Marvel Faces Grid",
-    price: "449 ₹",
+    price: "449 ",
     image: "/images/big/2.png",
   },
   {
     id: "024",
     name: "Ironman Collage",
-    price: "449 ₹",
+    price: "449 ",
     image: "/images/big/3.png",
   },
   {
     id: "026",
     name: "Black Widow Team",
-    price: "449 ₹",
+    price: "449 ",
     image: "/images/big/5.png",
   },
 ];
@@ -98,7 +98,9 @@ export default function Related() {
                 <h3 className="text-base font-medium text-[#3B2B1A]">
                   {product.name}
                 </h3>
-                <p className="mt-1 text-sm text-[#6A4E33]">{product.price}</p>
+                <p className="mt-1 text-sm text-[#6A4E33]">₹ {product.price}</p>
+                <p className="mt-1 text-sm text-[#6A4E33]">18 x 12 inches</p>
+
               </div>
             </motion.div>
           ))}
